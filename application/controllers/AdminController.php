@@ -83,14 +83,14 @@ class AdminController extends CI_Controller {
 	{
         $this->session->set_flashdata('flash', 'data depresi ditambah');
         $this->ModelDepresi->save();
-        redirect('/admin/depresi');
+        redirect('/admin/datadepresi');
 	}
 
     public function hapusdepresi($id)
 	{
         $this->session->set_flashdata('flash', 'data depresi telah dihapus');
         $this->ModelDepresi->delete($id);
-        redirect('/admin/depresi');
+        redirect('/admin/datadepresi');
 	}
 
     public function editdepresi($id)
@@ -115,7 +115,7 @@ class AdminController extends CI_Controller {
 			$data['detail'] = $this->input->post('detail');
 			$data['solusi'] = $this->input->post('solusi');
 			$this->ModelDepresi->update($data,$id);
-			redirect('admin/depresi');
+			redirect('admin/datadepresi');
 		}else{
             echo validation_errors();
             return;
@@ -151,7 +151,7 @@ class AdminController extends CI_Controller {
             // $data['mb'] = $this->input->post('mb');
 			// $data['md'] = $this->input->post('gejmdala');
 			$this->ModelGejala->save();
-			redirect('admin/gejala');
+			redirect('admin/datagejala');
 		}else{
             $this->session->set_flashdata('msg', 'Silakan isi kolom gejala!!!');
             redirect('admin/tambahgejala');
@@ -185,7 +185,7 @@ class AdminController extends CI_Controller {
 			$data['md'] = $this->input->post('md');
             $data['cf'] = $this->input->post('mb') - $this->input->post('md');
 			$this->ModelGejala->update($data,$id);
-			redirect('admin/gejala');
+			redirect('admin/datagejala');
 		}else{
             echo validation_errors();
             return;
@@ -196,7 +196,7 @@ class AdminController extends CI_Controller {
 	{
         $this->session->set_flashdata('flash', 'data gejala telah dihapus');
         $this->ModelGejala->delete($id);
-        redirect('/admin/gejala');
+        redirect('/admin/datagejala');
 	}
 
     public function datadiagnosa()
@@ -232,7 +232,7 @@ class AdminController extends CI_Controller {
             ));
         }
         $this->ModelKelompok->tambahDiagnosa($data);
-        redirect('admin/kelompok');
+        redirect('admin/datadiagnosa');
     }
 
     public function editdiagnosa($id)
